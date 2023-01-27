@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Vue Todo List</title>
+</head>
+<body>
+
+    <!-- app -->
+    <div id="app">
+        <!-- header with logo -->
+        <header>
+            <img id="logo" :src="logo.url" :alt="logo.alt">
+        </header>
+        <!-- /header -->
+
+        <!-- main with inputs + output -->
+        <main>
+            <!-- inputs: text + 2 buttons -->
+            <div class="inputs container">
+                <input type="text" v-model="input" @keyup.enter="submit" placeholder="New Todo">
+
+                <button @click="submit">
+                    Add Todo
+                </button>
+
+                <button @click="reset">
+                    Reset All
+                </button>
+            </div>
+            <!-- /inputs -->
+
+            <!-- output -->
+            <ul v-show="todo.length > 0">
+                <li v-for="(el, i) in todo">
+                    <span>{{ el }}</span>
+                    <i class="fas fa-times" @click="deleteEl(i)"></i>
+                </li>
+            </ul>
+            <!-- /output -->
+        </main>
+        <!-- /main -->
+
+        <!-- footer for deleting -->
+        <footer>
+            <div class="footer-relative"></div>
+        </footer>
+        <!-- /footer -->
+    </div>
+    <!-- /app -->
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
